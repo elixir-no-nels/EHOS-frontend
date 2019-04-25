@@ -11,7 +11,7 @@ import { NodesListComponent } from './nodes/nodes-list/nodes-list.component';
   declarations: [
     AppComponent,
     CloudsListComponent,
-    NodesListComponent
+    NodesListComponent,
   ],
   imports: [
     BrowserModule,

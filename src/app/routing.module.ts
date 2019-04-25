@@ -9,6 +9,7 @@ import { NodesListComponent }      from './nodes/nodes-list/nodes-list.component
 const routes: Routes = [
   { path: '', redirectTo: '/clouds', pathMatch: 'full' },
   { path: 'clouds', component: CloudsListComponent },
+  { path: 'nodes/:status_id', component: NodesListComponent },
   { path: 'nodes', component: NodesListComponent },
 //  { path: 'nodes/:id', component: NodesComponent },
 //  { path: 'nodes/:id/:node_status_id/:node_state_id', component: NodesComponent },
