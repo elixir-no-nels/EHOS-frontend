@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ButtonsModule} from 'ngx-bootstrap/buttons';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+import { FormsModule } from '@angular/forms';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
@@ -17,6 +23,11 @@ import { NodesListComponent } from './nodes/nodes-list/nodes-list.component';
     BrowserModule,
     RoutingModule,
     HttpClientModule,
+    FormsModule,
+//    NgbModule,
+    TooltipModule.forRoot(),
+    ButtonsModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

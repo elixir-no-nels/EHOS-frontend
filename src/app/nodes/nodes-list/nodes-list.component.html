@@ -1,31 +1,51 @@
-<h2>Nodes</h2>
+<h2>EHOS Nodes overview</h2>
+
+<div class="container-fluid bg-info" role='navigation'>
 
 
-<div class="nodes-list-app">
-<nav>
-  <ul>
-    <li *ngFor="let stat of status">
-      <button (click)="getNodesByStatus(stat.id)">{{stat.name}}</button>
-    </li>
-  </ul>
-  <ul>
-    <li *ngFor="let state of states">
-      <button (click)="getNodesByState(state.id)">{{state.name}}</button>
-    </li>
-  </ul>
-</nav>
+  <div class="nodes-list-app">
+    <nav>
 
-<div class="nodes">
-<ul>
-  <li *ngFor="let node of nodes">
-      <span class="badge">{{node.id}}</span> {{node.name}}
-      {{node.state}} {{node.status}}
-  </li>
-</ul>
+      <div class="btn-group" role='group' data-toggle="buttons" *ngFor="let stat of status">
+        <label class="btn btn-info active" data-toggle="button" checked autocomplete="off"
+               btnCheckbox role="button" (click)="getNodesByStatus(stat.id)">{{stat.name}}
+        </label>
+      </div>
+
+      <div class="btn-group" dropdown>
+        <button dropdownToggle type="button" class="btn btn-info dropdown-toggle">
+          {{reload_timeout}}<span class="caret"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem"><a class="dropdown-item" (click)="this.setTimeout(0)">Pause </a></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="setTimeout(5000)">5s </a></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="setTimeout(10000)">10s </a></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="setTimeout(30000)">30s </a></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="setTimeout(60000)">1m </a></li>
+          <li role="menuitem"><a class="dropdown-item" (click)="setTimeout(300000)">5m </a></li>
+        </ul>
+      </div>
+      <br>
+
+      <div class="btn-group" role='group' data-toggle="buttons" *ngFor="let state of states">
+        <label class="btn btn-info active" data-toggle="button" checked autocomplete="off"
+               btnCheckbox role="button" (click)="getNodesByState(state.id)">{{state.name}}
+        </label>
+      </div>
 
 
-<button (click)="flipAutoupdate()">Auto update</button>
-
-
+    </nav>
+  </div>
 </div>
+<div class="container-fluid " role='display'>
 
+  <div class="nodes" *ngFor="let node of nodes">
+
+    <div class="card" style="width: 50%;">
+      <div class="card-body bg-light">
+        <span class="badge">{{node.name}}</span> state:<b>{{node.state}}</b> status:<b>{{node.status}}</b>
+      </div>
+    </div>
+
+  </div>
+</div>
