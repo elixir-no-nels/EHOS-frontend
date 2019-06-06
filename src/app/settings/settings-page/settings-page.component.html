@@ -1,3 +1,18 @@
-<p>
-  settings-page works!
-</p>
+<h1>ehosd settings </h1>
+
+<div class="container-fluid " role='display'>
+
+  <table class="table table-striped" >
+
+    <tbody *ngFor="let setting of settings">
+      <tr>
+        <td><label for="name" >{{setting.name}}</label></td>
+         <!-- <input [(ngModel)]="setting.value" (ngModelChange)="changedSetting( setting)"/> -->
+         <input [(ngModel)]="setting.value" size="50" (ngModelChange)="changedSetting( setting)" />
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

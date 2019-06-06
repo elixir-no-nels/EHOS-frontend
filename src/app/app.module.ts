@@ -12,16 +12,18 @@ import { AppComponent } from './app.component';
 import { RoutingModule } from './routing.module';
 import { CloudsListComponent } from './clouds/clouds-list/clouds-list.component';
 import { NodesListComponent } from './nodes/nodes-list/nodes-list.component';
+import {SettingsPageComponent} from './settings/settings-page/settings-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CloudsListComponent,
     NodesListComponent,
+    SettingsPageComponent,
   ],
   imports: [
     BrowserModule,
-    RoutingModule,
+    RoutingModule ,
     HttpClientModule,
     FormsModule,
 //    NgbModule,

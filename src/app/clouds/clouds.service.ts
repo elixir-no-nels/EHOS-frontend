@@ -18,7 +18,8 @@ const httpOptions = {
 
 export class CloudsService {
 
-  private cloudUrl  = 'http://localhost:8888/clouds/';  // URL to web api
+  //private cloudUrl  = 'http://localhost:8888/clouds/';  // URL to web api
+  private cloudUrl  = 'http://localhost/ehos-frontend-api/clouds/';  // URL to web api
 
   /**
    * Handle Http operation that failed.

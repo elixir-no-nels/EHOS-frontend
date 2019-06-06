@@ -3,49 +3,71 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+
+
 import { Setting } from './settings.model';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
-  private cloudUrl  = 'http://localhost:8888/settings/';  // URL to web api
+  private settingsUrl  = 'http://localhost:8888/settings/';  // URL to web api
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  getSesttings(): Observable<Cloud[]> {
-    // TODO: send the message _after_ fetching the heroes
-    return this.http.get<Cloud[]>(this.cloudUrl)
+  getSettings(): Observable<Setting[]> {
+    return this.http.get<Setting[]>(this.settingsUrl)
       .pipe(
-        tap(_ => this.log('fetched clouds')),
-        catchError(this.handleError<Cloud[]>('getClouds', [])));
+        tap(_ => this.log('fetched settings')),
+        catchError(this.handleError<Setting[]>('getSettings', [])));
   }
 
+
+  updateSetting(setting:Setting): void {
+
+    //console.log('saving setting:', setting );
+    let url = `${this.settingsUrl}${setting['id']}`;
+    //let url  = `${this.settingsUrl}`;
+    //console.log( 'Settings URL: ['+url+']' );
+    //console.log('saving setting:', setting );
+
+    this.http.patch('http://localhost:8888/settings/5', setting, httpOptions).pipe(
+      tap(_ => console.log(`updated setting`)),
+      catchError(this.handleError<Setting[]>('updateSetting', []))
+    ).subscribe(
+      (val) => {
+        console.log("PATCH call successful value returned in body",
+          val);
+      },
+      response => {
+        console.log("PATCH call in error", response);
+      },
+      () => {
+        console.log("The PATCH observable is now completed.");
+      });
+
+    //return( void );
+  }
 
 
   constructor(private http: HttpClient, ) { }
 
   private log(message: string) {
-    console.log(`CloudsService: ${message}`);
+    console.log(`SettingsService: ${message}`);
   }
 
 }

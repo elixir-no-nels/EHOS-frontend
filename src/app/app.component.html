@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css">
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">{{title}}</a>
+  <a class="navbar-brand" routerLink="#">{{title}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,13 +10,16 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="clouds">Clouds</a>
+        <a class="nav-link" routerLink="clouds">Clouds</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="nodes">Nodes</a>
+        <a class="nav-link" [routerLink]="['nodes']">Nodes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="about">About</a>
+        <a class="nav-link" routerLink="/settings">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about">About</a>
       </li>
     </ul>
   </div>
